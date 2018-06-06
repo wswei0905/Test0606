@@ -9,6 +9,15 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class MyDBHelper extends SQLiteOpenHelper {
+    private static MyDBHelper instance;
+
+    public static MyDBHelper getInstance(Context context){
+    if(instance==null){
+        instance = new MyDBHelper(context,"my.db",null,1);
+    }
+    return instance;
+    }
+
     public MyDBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
